@@ -631,7 +631,7 @@ async def active_users_async(website_id: Optional[str] = None) -> int:
         resp = await client.get(url, headers=headers, follow_redirects=True)
         resp.raise_for_status()
 
-    return int(resp.json().get('x', 0))
+    return int(resp.json().get('visitors', 0))
 
 
 def active_users(website_id: Optional[str] = None) -> int:
@@ -657,7 +657,7 @@ def active_users(website_id: Optional[str] = None) -> int:
     resp = httpx.get(url, headers=headers, follow_redirects=True)
     resp.raise_for_status()
 
-    return int(resp.json().get('x', 0))
+    return int(resp.json().get('visitors', 0))
 
 
 async def website_stats_async(
